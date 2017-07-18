@@ -23,7 +23,7 @@
             <a class="btn btn-success" href="{{ url('/exam?target=beginner') }}" role="button">Go to exam for beginer.</a>
         </p>
         <p>
-            <a class="btn btn-primary disabled" href="{{ url('/exam?target=intermediate') }}" role="button">Go to exam for intermediate.</a>
+            <a class="btn btn-primary" href="{{ url('/exam?target=intermediate') }}" role="button">Go to exam for intermediate.</a>
         </p>
         <p>
             <a class="btn btn-danger disabled" href="{{ url('/exam?target=senior') }}" role="button">Go to exam for senior.</a>
