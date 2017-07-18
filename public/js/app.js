@@ -1,13 +1,13 @@
 // this variable beginner or intermediate or senior
 const target = window.location.search.replace('?target=', '');
-// array of exams table id
+// array of exams table ids
 let arrayExamIds;
 
-// find exam id from exams and answers table depends on category_id(beginner(1) or intermediate(2) or senior(3))
+// find exam ids from exams and answers table depends on category_id(beginner(1) or intermediate(2) or senior(3))
 axios.get('/' + target + '/ids')
     .then(function (response) {
         arrayExamIds = response.data;
-        // find first exam data and initialization Vue.js data.
+        // find first exam data and initialize Vue object.
         axios.get('/exam/' + target + '/' + arrayExamIds[0].id)
             .then(function (response) {
                 initVue(response.data);
@@ -24,11 +24,11 @@ axios.get('/' + target + '/ids')
 const NUM_OF_EXAM_LIMIT = 10;
 let vueApp;
 
+//initialize Vue object by first exam data
 function initVue(data) {
     vueApp = new Vue({
         el: '#vue-app',
         data: {
-            allData: data,
             score: 0,
             answerNo: 1,
             title: data.title,
@@ -54,7 +54,7 @@ function initVue(data) {
                 }
                 // TODO answerNo >= 10 (example no) resetAlldata (exam end)
                 if (this.answerNo >= NUM_OF_EXAM_LIMIT) {
-                    resetAlldata();
+                    endExam();
                 } else {
                     this.isAnswerNotAlready = false;
                     this.isNextExam = true;
@@ -73,16 +73,15 @@ function initVue(data) {
     });
 }
 
-//find next exam data and overwrite Vue.js data
-function findNextExamData(answerNo) {
-    axios.get('/exam/' + target + '/' + answerNo)
+//find next exam data and overwrite Vue object
+function findNextExamData(id) {
+    axios.get('/exam/' + target + '/' + id)
         .then(function (response) {
             let data = response.data;
             if (data == null) {
-                // TODO title and answers delete
-                resetAlldata();
+                //if get null data, exam force termination
+                endExam();
             } else {
-                vueApp.allData = data;
                 vueApp.title = data.title;
                 vueApp.answers = [data.answer_1, data.answer_2, data.answer_3, data.answer_4];
                 vueApp.correctAnswerNo = data.correct_answer_no;
@@ -93,8 +92,7 @@ function findNextExamData(answerNo) {
         });
 }
 
-function resetAlldata() {
-    vueApp.allData = [];
+function endExam() {
     vueApp.title = '試験終了';
     vueApp.answers = [];
     vueApp.answerNo = '-'
