@@ -38,9 +38,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-
-    </script>
+    
+    @yield('js')
+    
 </body>
 </html>

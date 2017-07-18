@@ -13,7 +13,7 @@
 
         <div v-for="(answer, index) in answers">
             <label>
-                <input type="radio" name="optionsRadios" :value="index + 1" v-model="selectAnswerNo">
+                <input type="radio" name="radios" :value="index + 1" v-model="selectAnswerNo">
                 @{{ answer }}
             </label>
         </div>
@@ -21,8 +21,6 @@
         <button type="button" class="btn btn-info" @click="goAnswer" v-if="isAnswerNotAlready">回答</button>
         <button type="button" class="btn btn-success" @click="goNextExam" v-if="isNextExam">次の問題へ</button>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" v-if="isAllCompleted">結果を見る</button>
-
-        {{--  <input type="hidden" v-model="correctAnswerNo">  --}}
 
         <div class="alert alert-success" v-if="isCorrect">
             <strong>正解！</strong>
@@ -32,7 +30,6 @@
             <strong>不正解！</strong>
         </div>
         
-
         <div class="modal fade" id="modal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -54,5 +51,8 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('js')
+    <script src="{{ asset('js/app.js') }}"></script>
 @endsection
