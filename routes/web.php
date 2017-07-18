@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Exam;
+//use Illuminate\Support\Facades\Config;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -27,35 +27,35 @@ Route::get('/exam', function () {
 // TODO add category
 Route::get('/exam/beginner/{id}', function ($id) {
     return json_encode(DB::table('exams')
-                ->join('answers', 'exams.answer_id', '=', 'answers.id')
-                ->select('exams.*', 'answers.*')
-                ->where('exams.id', '=', $id)
-                ->where('exams.category_id', '=', 1)
-                ->first());
+            ->join('answers', 'exams.answer_id', '=', 'answers.id')
+            ->select('exams.*', 'answers.*')
+            ->where('exams.id', '=', $id)
+            ->where('exams.category_id', '=', config('const.numCategoryIdBeginner'))
+            ->first());
 });
 
 Route::get('/exam/intermediate/{id}', function ($id) {
     return json_encode(DB::table('exams')
-                ->join('answers', 'exams.answer_id', '=', 'answers.id')
-                ->select('exams.*', 'answers.*')
-                ->where('exams.id', '=', $id)
-                ->where('exams.category_id', '=', 2)
-                ->first());
+            ->join('answers', 'exams.answer_id', '=', 'answers.id')
+            ->select('exams.*', 'answers.*')
+            ->where('exams.id', '=', $id)
+            ->where('exams.category_id', '=', config('const.numCategoryIdIntermediate'))
+            ->first());
 });
 
 Route::get('/exam/senior/{id}', function ($id) {
     return json_encode(DB::table('exams')
-                ->join('answers', 'exams.answer_id', '=', 'answers.id')
-                ->select('exams.*', 'answers.*')
-                ->where('exams.id', '=', $id)
-                ->where('exams.category_id', '=', 3)
-                ->first());
+            ->join('answers', 'exams.answer_id', '=', 'answers.id')
+            ->select('exams.*', 'answers.*')
+            ->where('exams.id', '=', $id)
+            ->where('exams.category_id', '=', config('const.numCategoryIdSenior'))
+            ->first());
 });
 
 
 Route::get('/beginner/ids', function () {
     return json_encode(DB::table('exams')
-            ->where('category_id', '=', 1)
+            ->where('category_id', '=', config('const.numCategoryIdBeginner'))
             ->inRandomOrder()
             ->limit(10)
             ->select('id')
@@ -64,7 +64,7 @@ Route::get('/beginner/ids', function () {
 
 Route::get('/intermediate/ids', function () {
     return json_encode(DB::table('exams')
-            ->where('category_id', '=', 2)
+            ->where('category_id', '=', config('const.numCategoryIdIntermediate'))
             ->inRandomOrder()
             ->limit(10)
             ->select('id')
@@ -73,7 +73,7 @@ Route::get('/intermediate/ids', function () {
 
 Route::get('/senior/ids', function () {
     return json_encode(DB::table('exams')
-            ->where('category_id', '=', 3)
+            ->where('category_id', '=', config('const.numCategoryIdSenior'))
             ->inRandomOrder()
             ->limit(10)
             ->select('id')
