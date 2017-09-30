@@ -33,7 +33,7 @@
             <h2>
               <img id="senior-img" src="{{ asset('image/senior-logo.png') }}">
             </h2>
-            <a class="btn square_btn disabled" href="{{ url('/exam?target=senior') }}" role="button">上級問題に挑む</a>
+            <a class="btn square_btn" href="{{ url('/exam?target=senior') }}" role="button">上級問題に挑む</a>
           </div>
         </div>
       </div>
