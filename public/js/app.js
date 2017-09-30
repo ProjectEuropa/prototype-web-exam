@@ -93,8 +93,6 @@ function findNextExamData(id) {
 }
 
 function endExam() {
-    vueApp.title = '試験終了';
-    vueApp.answers = [];
     vueApp.answerNo = '-'
     vueApp.isAnswerNotAlready = false;
     vueApp.isNextExam = false;

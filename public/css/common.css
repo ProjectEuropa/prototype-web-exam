@@ -1,0 +1,111 @@
+footer,
+.navbar-static-top {
+  background: #17202b;
+  border-color: #17202b;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#main-carousel {
+  margin-top: -20px;
+}
+
+.carousel-caption {
+  top: 40%;
+}
+
+#beginner-img {
+  height: 50px;
+  width: 200px;
+}
+
+#senior-img {
+  height: 50px;
+  width: 150px;
+}
+
+#intermediate-img {
+  height: 50px;
+  width: 300px;
+}
+
+small {
+  color: #fff;
+}
+
+.square_btn {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #134D67;
+  transition: .4s;
+}
+
+.square_btn:hover {
+  background: #297771;
+}
+
+#home-link,
+#about-link {
+  color: #fff;
+}
+
+#home-link:hover,
+#about-link:hover {
+  background: #324156;
+}
+
+.carousel,
+.carousel .item,
+.carousel .item-mask,
+.carousel-inner>.item>img {
+  height: 1000px;
+}
+
+.carousel .item-mask {
+  width: 100%;
+  overflow: hidden;
+}
+
+.modal-header {
+  border-radius: 5px 5px 0px 0px;
+  background-color: #17202b;
+  color: #eee;
+}
+
+.modal-footer {
+  border-radius: 0px 0px 5px 5px;
+  background-color: #eee;
+  color: #666;
+}
+
+.carousel-inner>.item>.item-mask>img {
+  position: absolute;
+}
+
+.panel-head-content {
+  background: #17202b;
+  color: #fff;
+}
+
+.panel-content {
+  border: solid 2px #17202b;
+  border-radius: 0px 0px 5px 5px;
+}
+
+label {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .carousel-caption {
+    top: 30%;
+  }
+}

@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container" id="vue-app" style="display:none">
+@section('css')
+    <link rel="stylesheet" href="{{ asset('css/exam.css') }}">
+@endsection
 
-        <!-- Main component for a primary marketing message or call to action -->
-        <div class="panel panel-primary">
-            <div class="panel-heading">Exam No.@{{ answerNo }}</div>
+
+@section('content')
+  <main id="vue-app" style="display:none">
+    <div class="container" >
+        <div class="panel panel-content">
+            <div class="panel-heading panel-head-content">Exam No.@{{ answerNo }}</div>
             <div class="panel-body">
                 <p> @{{ title }}</p>
             </div>
@@ -18,39 +22,38 @@
             </label>
         </div>
 
-        <button type="button" class="btn btn-info" @click="goAnswer" v-if="isAnswerNotAlready">回答</button>
-        <button type="button" class="btn btn-success" @click="goNextExam" v-if="isNextExam">次の問題へ</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" v-if="isAllCompleted">結果を見る</button>
+        <button type="button" class="btn btn-answer" @click="goAnswer" v-if="isAnswerNotAlready">回答</button>
+        <button type="button" class="btn btn-next" @click="goNextExam" v-if="isNextExam">次の問題へ</button>
+        <button type="button" class="btn square_btn" data-toggle="modal" data-target="#modal-result" v-if="isAllCompleted">結果を見る</button>
 
         <div class="alert alert-success" v-if="isCorrect">
-            <strong>正解！</strong>
+            正解！
         </div>
 
         <div class="alert alert-danger" v-if="isMistake">
-            <strong>不正解！</strong>
+            不正解！
         </div>
-        
-        <div class="modal fade" id="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                        <h4 class="modal-title">score</h4>
-                    </div>
-                    <div class="progress" style="height: 1em">
-                        <div class="progress-bar progress-bar-striped active" role="progressbar" :style="{width : (score * 10) + '%'}">
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        @{{ score * 10 }} / 100点
-                    </div>
-                    <div class="modal-footer">
-                        <a href="{{ url('/') }}"><button type="button" class="btn btn-primary">終了する</button></a>
-                    </div>
+    </div>
+    <div id="modal-result" tabindex="-1" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" class="close">
+                        <span>×</span>
+                    </button>
+                    <h4 class="modal-title">score</h4>
+                </div>
+                <div class="progress" style="height: 10px;">
+                    <div role="progressbar" class="progress-bar progress-bar-striped active" :style="{width : (score * 10) + '%'}"></div>
+                </div>
+                <div class="modal-body text-center">@{{ score * 10 }} / 100点</div>
+                <div class="modal-footer">
+                    <a class="btn square_btn" href="{{ url('/') }}" >終了する</a>
                 </div>
             </div>
         </div>
     </div>
+  </main>
 @endsection
 
 @section('js')

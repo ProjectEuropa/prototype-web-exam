@@ -1,0 +1,38 @@
+body {
+    background-image: url("../image/moon.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.alert {
+    margin-top: 20px;
+}
+
+.panel-heading {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.btn-answer {
+    background: #008080;
+    color: #fff;
+}
+
+.btn-next {
+    background: #1d633c;
+    color: #fff;
+}
+
+.alert-success {
+    background: #fff;
+    border: solid 6px #267341;
+    color: #000;
+}
+
+.alert-danger {
+    background: #882626;
+    border-color: #882626;
+    color: #fff;
+}
