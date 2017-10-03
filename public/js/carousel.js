@@ -1,9 +1,9 @@
 $('#main-carousel').on('slide.bs.carousel', function () {
-    // キャプションを隠す
+    // hide caption
     $('#main-carousel .carousel-caption').hide();
 });
-// スライドが停止したら発動
+// When slide stop, this function start.
 $('#main-carousel').on('slid.bs.carousel', function () {
-    // キャプションをフェードインさせる
+    // fadein caption
     $('#main-carousel .carousel-caption').fadeIn();
 });
